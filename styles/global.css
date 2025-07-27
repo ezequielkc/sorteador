@@ -1,0 +1,264 @@
+/*
+CSS Reset, variáveis, layout responsivo e utilitários
+*/
+
+/* CSS Reset - normaliza comportamento entre navegadores */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* inclui padding/border na largura total */
+}
+
+/* CSS Custom Properties - variáveis globais */
+:root {
+  /* Cores de conteúdo (texto) */
+  --content-primary: #FFFFFF;
+  --content-secondary: #c7c9cc;
+  --content-tertiary: #d9d9d9;
+  --content-brand: #8de7dd;
+  
+  /* Cores de fundo */
+  --bg-primary: #020202;
+  --bg-secondary: #111012;
+  --bg-tertiary: #24222e;
+  --bg-gray: #3d3d3d;
+  
+  /* Gradientes */
+  --gradient-content: linear-gradient(90deg,#C7C9CC 0%,#3D3D3D 100%);
+  
+  /* Sistema tipográfico */
+  --ff-sora: "Sora", sans-serif;
+  --ff-mono: "Roboto Mono", monospace;
+  --ff-flex: "Roboto Flex", sans-serif;
+  
+  /* Propriedades tipográficas - mobile first */
+  --dp-lg: 700 3rem/1.3 var(--ff-sora);
+  --dp-md: 700 2rem/1.3 var(--ff-sora);
+  --overline: 600 0.875rem/1.5 var(--ff-mono);
+  --number-mono: 600 2.5rem/1.5 var(--ff-mono);
+  --paragraph-lg: 500 1rem/1.5 var(--ff-flex);
+  --paragraph-md: 500 0.875rem/1.5 var(--ff-flex);
+  --paragraph-sm: 500 0.75rem/1.5 var(--ff-flex);
+  --label-md: 600 1.125rem/1.5 var(--ff-flex);
+  --label-sm: 600 0.875rem/1.5 var(--ff-flex);
+  
+  /* Transformações */
+  --uppercase: uppercase;
+  
+  /* Layout responsivo - mobile first */
+  --px-margin: 1.5rem;
+}
+
+/* Configurações globais do body */
+body {
+  background-color: var(--bg-primary);
+  position: relative;
+  overflow-x: hidden;
+  justify-content: center;
+  font-size: 16px; /* Base font size para rem */
+  line-height: 1.5; /* melhor legibilidade global */
+  
+  /* Melhor experiência em dispositivos touch */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  
+  /* Centralização no mobile */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Scroll suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Melhor experiência touch para todos os elementos interativos */
+button, input, label, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Elemento decorativo de fundo */
+#bg-shape {
+  position: absolute;
+  z-index: -2;
+  /* Múltiplos backgrounds: gradiente + imagem */
+  background: linear-gradient(-180deg,rgba(0,0,0,0.9)22.66%,rgba(0,0,0,0.54)100%),url(../assets/images/shapes.png);
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  left: -50%;
+  bottom: 0;
+  width: 200%;
+}
+
+/* Texto em maiúsculo global */
+h1,h2,h3,label {
+  text-transform: var(--uppercase);
+}
+
+/* Container responsivo */
+.container {
+  /* Melhor aproveitamento da largura em mobile */
+  max-width: min(100vw - 2*var(--px-margin), 1280px);
+  margin-inline: auto; /* centraliza horizontalmente */
+  width: 100%;
+  
+  /* Centralização adicional no mobile */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 var(--px-margin);
+}
+
+/* Utilitário para CSS Grid */
+.grid {
+  display: grid;
+}
+
+/* Esconde elementos em telas pequenas */
+.desktop-only {
+  display: none;
+}
+
+/* Layout principal centralizado no mobile */
+#layout {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+/* Media Queries - breakpoints responsivos mobile-first */
+
+/* Orientação paisagem em mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root {
+    --px-margin: 1rem;
+  }
+  
+  body {
+    min-height: auto;
+  }
+  
+  .container {
+    text-align: left;
+  }
+}
+
+/* Smartphone grande - 480px+ */
+@media (min-width: 480px) {
+  :root {
+    --px-margin: 2rem;
+    --dp-md: 700 2.25rem/1.3 var(--ff-sora);
+    --label-md: 600 1.25rem/1.5 var(--ff-flex);
+    --label-sm: 600 1rem/1.5 var(--ff-flex);
+    --paragraph-lg: 500 1.125rem/1.5 var(--ff-flex);
+  }
+  
+  .container {
+    text-align: left;
+  }
+  
+  #layout {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+/* Tablet - 768px+ */
+@media (min-width: 768px) {
+  :root {
+    --px-margin: 2.5rem;
+    --dp-lg: 800 3.5rem/1.3 var(--ff-sora);
+    --dp-md: 800 2.5rem/1.3 var(--ff-sora);
+    --number-mono: 600 3rem/1.5 var(--ff-mono);
+    --overline: 600 1rem/1.5 var(--ff-mono);
+    --paragraph-lg: 500 1.25rem/1.5 var(--ff-flex);
+  }
+  
+  #layout {
+    gap: 2.5rem;
+  }
+}
+
+/* Desktop pequeno - 950px+ */
+@media (min-width: 950px) {
+  :root {
+    --px-margin: 3rem;
+    --dp-lg: 800 4rem/1.3 var(--ff-sora);
+  }
+  
+  .desktop-only {
+    display: block;
+  }
+  
+  /* Body em grid com altura mínima de tela para empurrar footer-credit */
+  body {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto; /* logo, layout, espaço flexível, footer-credit */
+    min-height: 100vh; /* altura mínima da tela */
+    gap: 2rem;
+    align-items: start;
+  }
+  
+  /* Container que agrupa logo e header horizontalmente */
+  .container {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    text-align: left;
+  }
+  
+  /* Layout flexbox simples: header e main lado a lado */
+  #layout {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* Desktop grande - 1200px+ */
+@media (min-width: 1200px) {
+  :root {
+    --px-margin: 4rem;
+    --dp-lg: 800 4.5rem/1.3 var(--ff-sora);
+  }
+  
+  body {
+    gap: 3rem;
+  }
+  
+  /* Container que agrupa logo e header horizontalmente */
+  .container {
+    gap: 4rem;
+  }
+  
+  #layout {
+    gap: 4rem;
+  }
+}
+
+/* Desktop extra grande - 1440px+ */
+@media (min-width: 1440px) {
+  :root {
+    --px-margin: 6rem;
+  }
+  
+  /* Container que agrupa logo e header horizontalmente */
+  .container {
+    gap: 5rem;
+  }
+  
+  #layout {
+    gap: 6rem;
+  }
+}
+

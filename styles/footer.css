@@ -1,0 +1,133 @@
+/*
+Layout e tipografia para seções de informações
+*/
+
+/* Estilos compartilhados para footer e informações */
+footer, #informations {
+  margin-block: 5rem 2.5rem; /* margens superior e inferior */
+  gap: 2.25rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  & section {
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+    width: 100%;
+    max-width: 320px; /* Largura controlada no mobile */
+    text-align: left;
+    justify-content: center;
+  }
+
+  & div {
+    flex: 1;
+    
+    & h3 {
+      color: var(--content-brand);
+      font: var(--paragraph-md);
+      text-transform: unset; /* remove maiúsculo global */
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    & p {
+      color: var(--content-secondary);
+      font: var(--paragraph-sm);
+      text-align: left;
+      line-height: 1.6;
+    }
+  }
+  
+  /* Ícones centralizados */
+  & img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 0.25rem;
+  }
+}
+
+/* Footer com layout grid */
+footer { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Crédito no rodapé */
+.footer-credit {
+  text-align: center;
+  margin-top: 2rem;   
+  font-size: 0.875rem;
+  color: #8de7dd; /* cor personalizada para o crédito */
+  width: 100%;
+  padding: 1rem 0;
+  
+  /* Link no footer-credit */
+  & a {
+    color: inherit; /* herda a cor do elemento pai */
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Media Queries responsivas */
+
+/* Smartphone grande - 480px+ */
+@media (min-width: 480px) {
+  footer, #informations {
+    text-align: left;
+    align-items: flex-start;
+    
+    & section {
+      max-width: 100%;
+      justify-content: flex-start;
+    }
+  }
+}
+
+/* Desktop - 950px+ */
+@media (950px <= width) {
+  footer {
+    display: none; /* esconde footer no desktop para evitar duplicação */
+  }
+
+  #informations {
+    margin-block: 0;
+    max-width: 20rem;
+    text-align: left;
+    align-items: flex-start;
+
+    /* Espaçamento entre seções adjacentes */
+    & section + section {
+      margin-top: 2.25rem;
+    }
+    
+    & section {
+      max-width: 100%;
+    }
+  }
+  
+  /* Garante que footer-credit apareça como última seção */
+  .footer-credit {
+    margin: 0;
+    padding: 2rem 0;
+    width: 100%;
+  }
+}
+
+/* Desktop grande - 1200px+ */
+@media (width >= 1200px) {
+  #informations {
+    max-width: 24.125rem;
+  }
+  
+  .footer-credit {
+    padding: 3rem 0;
+  }
+}

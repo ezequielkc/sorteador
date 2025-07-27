@@ -1,0 +1,159 @@
+/*
+HEADER.CSS - Estilos do Cabeçalho
+================================
+Seletores avançados, texto com gradiente e responsividade
+*/
+
+/* Seletor de atributo - seleciona img que contém "logo" no src */
+img[src*="logo"] {
+  object-fit: cover;
+  display: block;
+  margin-block: 1.5rem 0;
+  width: auto;
+  height: 8rem; /* Aumentado 35% de 6rem */
+  margin-left: auto;
+  margin-right: auto; /* Centraliza a logo no mobile */
+}
+
+/* Container principal do header */
+header {
+  padding-block: 2rem;
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* :nth-child(1) seleciona o primeiro elemento filho */
+header > div:nth-child(1) {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* Texto com gradiente usando background-clip */
+header h3 {
+  font: var(--overline);
+  background: var(--gradient-content);
+  color: transparent;
+  /* background-clip: text faz o background aparecer apenas no texto */
+  -webkit-background-clip: text; /* compatibilidade Safari/Chrome */
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Título principal */
+header h1 {
+  font: var(--dp-md);
+  color: var(--content-primary);
+  max-width: 100%; /* usa toda largura disponível */
+  word-break: break-word; /* quebra palavras longas se necessário */
+  text-align: center;
+  line-height: 1.2;
+  margin: 0 auto;
+}
+
+/* Media Queries responsivas */
+
+/* Smartphone grande - 480px+ */
+@media (min-width: 480px) {
+  img[src*="logo"] {
+    height: 9.5rem; /* Aumentado 35% de 7rem */
+    margin-block: 2rem 0;
+  }
+
+  header {
+    gap: 2.5rem;
+    text-align: left;
+    align-items: flex-start;
+  }
+  
+  header > div:nth-child(1) {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  header h3 {
+    text-align: left;
+  }
+  
+  header h1 {
+    text-align: left;
+    margin: 0;
+  }
+}
+
+/* Tablet - 768px+ */
+@media (min-width: 768px) {
+  img[src*="logo"] {
+    height: 11rem; /* Aumentado 35% de 8rem */
+  }
+  
+  header {
+    padding-block: 2.5rem;
+    gap: 3rem;
+  }
+}
+
+/* Desktop médio - 950px+ */
+@media (min-width: 950px) {
+  img[src*="logo"] {
+    margin-block: 2rem 0;
+    height: 13.5rem; /* Aumentado 35% de 10rem */
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  header {
+    padding-block: 0;
+    gap: 2rem;
+    max-width: 36rem; /* Aumentado para acomodar logo maior */
+    max-height: auto; /* Removido limite de altura */
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  header h1 {
+    font-size: 3.25rem;
+    max-width: 100%;
+    text-align: left;
+  }
+  
+  header h3 {
+    text-align: left;
+  }
+}
+
+/* Desktop grande - 1200px+ */
+@media (min-width: 1200px) {
+  img[src*="logo"] {
+    margin-block: 3rem 0;
+    height: 16rem; /* Aumentado 35% de 12rem */
+  }
+
+  header {
+    max-width: 44rem; /* Aumentado para acomodar logo maior */
+  }
+
+  header h1 {
+    font: var(--dp-lg);
+  }
+}
+
+/* Desktop extra grande - 1440px+ */
+@media (min-width: 1440px) {
+  img[src*="logo"] {
+    margin-block: 4rem 0;
+    height: 19rem; /* Aumentado 35% de 14rem */
+  }
+  
+  header {
+    max-width: 48rem; /* Aumentado para acomodar logo maior */
+  }
+}
