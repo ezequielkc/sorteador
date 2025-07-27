@@ -1,8 +1,6 @@
 # Sorteador de Números
 
-> 🎲 **Aplicação web responsiva para sorteio de números aleatórios**
-
-Uma ferramenta moderna e intuitiva para gerar números aleatórios com controle total sobre intervalos e repetições. Desenvolvida com foco na experiência do usuário e compatibilidade mobile.
+Ferramenta para gerar números aleatórios com controle sobre intervalos e repetições. Desenvolvida com foco na experiência do usuário e compatibilidade mobile.
 
 ## Preview
 
@@ -167,4 +165,3 @@ function showNumbers() {
 - Modo offline (PWA)
 - Testes automatizados
 - Sistema de build moderno
-# sorteador
